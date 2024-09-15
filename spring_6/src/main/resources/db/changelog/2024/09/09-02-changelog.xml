@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1725870859032-1" author="AB">
+        <createTable tableName="beer_csv_record">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_beer_csv_record"/>
+            </column>
+            <column name="row" type="integer"/>
+            <column name="count" type="integer"/>
+            <column name="abv" type="VARCHAR(255)"/>
+            <column name="ibu" type="VARCHAR(255)"/>
+            <column name="beer" type="VARCHAR(255)"/>
+            <column name="style" type="VARCHAR(255)"/>
+            <column name="brewery_id" type="integer"/>
+            <column name="ounces" type="FLOAT"/>
+            <column name="style2" type="VARCHAR(255)"/>
+            <column name="count_y" type="VARCHAR(255)"/>
+            <column name="brewery" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="label" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

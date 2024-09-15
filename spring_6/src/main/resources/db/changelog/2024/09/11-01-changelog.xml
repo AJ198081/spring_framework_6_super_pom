@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1726005063045-6" author="AB">
+        <preConditions onFail="MARK_RAN" onError="HALT">
+            <sequenceExists sequenceName="uuid_seq"/>
+        </preConditions>
+        <dropSequence sequenceName="uuid_seq"/>
+    </changeSet>
+    <changeSet id="1726005063045-1" author="AB">
+        <dropColumn columnName="beer_style" tableName="beer"/>
+    </changeSet>
+    <changeSet id="1726005063045-2" author="AB">
+        <addColumn tableName="beer">
+            <column defaultValue="IPA" name="beer_style" type="varchar(30)">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1726005063045-3" author="AB">
+        <addNotNullConstraint columnDataType="varchar(30)" columnName="beer_style" tableName="beer" validate="true"/>
+    </changeSet>
+    <changeSet id="1726005063045-4" author="AB">
+        <addDefaultValue columnDataType="varchar(30)" columnName="beer_style" defaultValue="IPA" tableName="beer"/>
+    </changeSet>
+    <changeSet id="1726005063045-5" author="AB">
+        <modifyDataType columnName="price" newDataType="DECIMAL" tableName="beer"/>
+    </changeSet>
+
+</databaseChangeLog>

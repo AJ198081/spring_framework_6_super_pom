@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1725872470998-1" author="AB">
+        <addColumn tableName="beer_csv_record">
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_time" type="TIMESTAMPTZ"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="updated_time" type="TIMESTAMPTZ"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1725872470998-2" author="AB">
+        <dropColumn tableName="beer_csv_record">
+            <column name="created_time"/>
+        </dropColumn>
+        <dropColumn tableName="beer_csv_record">
+            <column name="updated_time"/>
+        </dropColumn>
+    </changeSet>
+    <changeSet id="1725872470998-3" author="AB">
+        <addColumn tableName="beer_csv_record">
+            <column name="created_time" type="TIMESTAMPTZ"/>
+            <column name="updated_time" type="TIMESTAMPTZ"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

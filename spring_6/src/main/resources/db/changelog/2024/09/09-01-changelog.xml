@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1725860718583-1" author="AB">
+        <createTable tableName="beer">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_beer"/>
+            </column>
+
+            <column name="beer_name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="price" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="beer_style" type="VARCHAR(20)"/>
+            <column name="upc" type="VARCHAR(255)"/>
+            <column name="quantity_on_hand" type="integer"/>
+            <column name="version" type="INT"/>
+            <column name="created_time" type="TIMESTAMPTZ"/>
+            <column name="updated_time" type="TIMESTAMPTZ"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1725862411200-1" author="AB">
+        <sql>
+            ALTER TABLE "beer"
+                ADD column batch varchar(30);
+        </sql>
+    </changeSet>
+    <include file="db/changelog/2024/09/09-02-changelog.xml"/>
+    <include file="db/changelog/2024/09/09-03-changelog.xml"/>
+    <include file="db/changelog/2024/09/11-01-changelog.xml"/>
+    <include file="db/changelog/2024/09/12-03-changelog.xml"/>
+    <include file="db/changelog/2024/09/12-02-changelog.xml"/>
+    <include file="db/changelog/2024/09/12-01-changelog.xml"/>
+    <include file="db/changelog/2024/09/14-01-changelog.xml"/>
+    <include file="db/changelog/2024/09/14-02-changelog.xml"/>
+
+</databaseChangeLog>
