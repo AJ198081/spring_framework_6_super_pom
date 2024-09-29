@@ -93,12 +93,18 @@ class BeerControllerTCIT {
 //                .header("Authorization", "Basic ".concat(Base64.getEncoder().encodeToString("user:password".getBytes(StandardCharsets.UTF_8))))
                 .body(BeerDTO.builder()
                         .beerStyle(BeerStyle.WHEAT)
+//                        .upc("283923ds")
+//                        .price(new BigDecimal("12.34"))
                         .beerName("Test Beer")
                         .build())
                 .retrieve();
 
-        org.junit.jupiter.api.Assertions.assertThrows(HttpClientErrorException.BadRequest.class,
-                () -> responseSpec.toEntity(BeerDTO.class), "Save request should have thrown exception for Invalid Arguments in BeerDtoNo");
+//        org.junit.jupiter.api.Assertions.assertThrows(HttpClientErrorException.BadRequest.class,
+//                () -> responseSpec.toEntity(BeerDTO.class), "Save request should have thrown exception for Invalid Arguments in BeerDtoNo");
+
+        Assertions.assertThatExceptionOfType(HttpClientErrorException.BadRequest.class)
+                .isThrownBy(() -> responseSpec.toEntity(BeerDTO.class))
+                .withMessage("400 : \"[{\"upc\":\"must not be blank\"},{\"price\":\"must not be null\"}]\"");
     }
 
     @TestConfiguration

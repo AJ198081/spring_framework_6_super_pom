@@ -20,6 +20,10 @@
 
     <modules>
         <module>spring_6</module>
+        <module>auth-server</module>
+        <module>auth-client</module>
+        <module>multithreading</module>
+        <module>application-events</module>
     </modules>
 
     <url/>
