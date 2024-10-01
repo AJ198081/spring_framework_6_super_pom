@@ -1,7 +1,6 @@
 package dev.aj.eventdrivenrabbit.repository;
 
 import dev.aj.eventdrivenrabbit.domain.model.Balance;
-import dev.aj.eventdrivenrabbit.domain.model.Payment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

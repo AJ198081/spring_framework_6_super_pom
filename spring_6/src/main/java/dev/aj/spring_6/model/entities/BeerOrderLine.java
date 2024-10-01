@@ -34,7 +34,10 @@ public class BeerOrderLine {
     @JdbcTypeCode(SqlTypes.UUID)
     private UUID id;
 
+    @Builder.Default
     private Integer orderQuantity = 0;
+
+    @Builder.Default
     private Integer quantityAllocated = 0;
 
     @Version

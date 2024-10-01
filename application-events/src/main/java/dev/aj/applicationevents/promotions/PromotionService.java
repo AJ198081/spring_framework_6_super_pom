@@ -2,7 +2,6 @@ package dev.aj.applicationevents.promotions;
 
 import dev.aj.applicationevents.customer.Customer;
 import dev.aj.applicationevents.customer.CustomerRegisteredEvent;
-import dev.aj.applicationevents.customer.CustomerRepository;
 import dev.aj.applicationevents.order.Order;
 import dev.aj.applicationevents.order.OrderService;
 import lombok.RequiredArgsConstructor;

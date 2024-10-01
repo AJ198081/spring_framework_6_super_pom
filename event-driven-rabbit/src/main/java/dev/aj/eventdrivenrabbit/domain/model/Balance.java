@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -13,7 +15,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Balance {
+@RedisHash("balance")
+public class Balance implements Serializable {
 
     private String id;
     private BigDecimal amount;

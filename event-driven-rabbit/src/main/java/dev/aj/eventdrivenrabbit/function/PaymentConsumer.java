@@ -5,12 +5,12 @@ import dev.aj.eventdrivenrabbit.domain.model.Payment;
 import dev.aj.eventdrivenrabbit.repository.BalanceRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.function.Consumer;
 
-@Component
+@Service
 @RequiredArgsConstructor
 @Slf4j
 public class PaymentConsumer implements Consumer<Payment> {

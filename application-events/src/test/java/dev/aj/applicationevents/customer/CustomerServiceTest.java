@@ -4,7 +4,6 @@ import dev.aj.applicationevents.analytics.AnalyticsService;
 import dev.aj.applicationevents.email.Email;
 import dev.aj.applicationevents.email.EmailRepository;
 import dev.aj.applicationevents.order.Order;
-import dev.aj.applicationevents.order.OrderRepository;
 import dev.aj.applicationevents.order.OrderService;
 import dev.aj.applicationevents.ticker.TicketRepository;
 import lombok.SneakyThrows;

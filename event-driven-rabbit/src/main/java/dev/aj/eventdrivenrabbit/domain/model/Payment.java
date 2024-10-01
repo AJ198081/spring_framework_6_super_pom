@@ -1,7 +1,5 @@
 package dev.aj.eventdrivenrabbit.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -18,13 +17,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Builder
 @RedisHash("payment")
-public class Payment {
+public class Payment implements Serializable {
     @Id
-    @GeneratedValue
     private String id;
 
-    private String userId;
     private BigDecimal amount;
-    private String status;
-
 }

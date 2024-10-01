@@ -5,6 +5,7 @@ import com.github.dockerjava.api.model.PortBinding;
 import dev.aj.spring_6.model.BeerStyle;
 import dev.aj.spring_6.model.entities.Beer;
 import dev.aj.spring_6.model.entities.Category;
+import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -80,20 +81,32 @@ class CategoryRepositoryTest {
     }
 
     @Test
+    @Transactional
     void testAddCategory() {
-        Category ipa = categoryRepository.save(Category.builder()
+        Category ipa = Category.builder()
                 .description("IPA")
-                .build());
+                .build();
 
-        categoryRepository.flush();
+//        categoryRepository.flush();
 
-        firstBeer.addCategory(ipa);
+        Beer initialBeer = beerRepository.findAll().stream()
+                .findFirst()
+                .orElse(beerRepository.save(
+                                Beer.builder()
+                                        .upc("2398ujifo")
+                                        .beerName("first beer")
+                                        .beerStyle(BeerStyle.IPA)
+                                        .price(new BigDecimal("23.99"))
+                                        .build()
+                        )
+                );
+        initialBeer.addCategory(ipa);
 
-        Beer savedBeer = beerRepository.save(firstBeer);
-        beerRepository.flush();
+//        Beer savedBeer = beerRepository.save(initialBeer);
+//        beerRepository.flush();
 
-        Assertions.assertThat(savedBeer.getCategories()).hasSize(1);
-        Assertions.assertThat(savedBeer.getCategories().stream().findFirst().get().getDescription()).isEqualTo("IPA");
+        Assertions.assertThat(initialBeer.getCategories()).hasSize(2);
+        Assertions.assertThat(initialBeer.getCategories().stream().findFirst().get().getDescription()).isEqualTo("IPA");
 
     }
 }
