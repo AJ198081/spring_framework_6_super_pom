@@ -1,6 +1,9 @@
 spring:
   application:
     name: auth_server
+  output:
+    ansi:
+      enabled: always
 #  security:
 #    user:
 #      name: user1
